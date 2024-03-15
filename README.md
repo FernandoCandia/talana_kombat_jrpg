@@ -8,37 +8,56 @@
 
 ### Alternativa 1 - DockerHub
 
-Descarga la imagen Docker con el siguiente comando en consola:
+Descarga la imagen Docker del proyecto con el siguiente comando en consola:
 
 ```sh
 docker pull fdojavier2/talana_kombat_jrpg:1.0.0
 ```
 
-Luego debemos ejecutar el contenedor con:
+Ejecuta el contenedor con:
 
 ```sh
 docker run -it --rm -p 8000:80 fdojavier2/talana_kombat_jrpg:1.0.0
 ```
 
-### Alternativa 2 - Archivo comprimido
+Finalmente, accede a http://localhost:8000 y comienza a utilizar la aplicación.
 
-Debes descomprimir el archivo 'talana_kombat_jrpg.zip', acceder a este directorio descomprimido desde la consola y ejecutar los siguientes comandos:
+### Alternativa 2 - GitHub + Docker
+
+Clona el siguiente repositorio:
 
 ```sh
-docker build -t talana_kombat_jrpg .
-docker run -it --rm -p 8000:80 talana_kombat_jrpg
+git clone https://github.com/FernandoCandia/talana_kombat_jrpg.git
 ```
 
-Luego en el explorador acceder a http://localhost:8000 y comenzar a ocupar la aplicación.
+En consola, asegúrate de estar en la carpeta root del repositorio:
 
-## Interacción con página web
+```sh
+cd talana_kombat_jrpg 
+```
+
+Luego, crea la imagen de Docker con:
+
+```sh
+docker build -t talana_kombat_jrpg . 
+```
+
+Ejecuta el contenedor con:
+
+```sh
+docker run -it --rm -p 8000:80 fdojavier2/talana_kombat_jrpg:1.0.0
+```
+
+Finalmente, accede a http://localhost:8000 y comienza a utilizar la aplicación.
+
+## Interacción con aplicación web
 Cargar archivo JSON con los ejemplos que aparecen en el mismo directorio del proyecto django o cualquier otro archivo JSON con el formato de entrada correspondiente.
 
 En base a los datos de entrada en formato JSON se relatará la pelea y el resultado final.
 
 ## Tests
 
-Mientras está corriendo el servidor, puedes ejecutar los tests del proyecto django con los siguientes comandos en una nueva consola en el root del proyecto (Importante: no debes terminar la ejecución el servidor en la consola anterior):
+Mientras está corriendo el servidor en Docker, puedes ejecutar los tests del proyecto django abriendo una consola de powershell que también apunte al root del proyecto (Importante: no debes terminar la ejecución del servidor en la consola anterior):
 
 ```sh
 docker ps -q | Select-Object -Last 1 | ForEach-Object { docker exec -it $_ bash }
