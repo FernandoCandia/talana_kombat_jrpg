@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TALANA KOMBAT JRPG</title>
+</head>
+<body>
+    <h1>TALANA KOMBAT JRPG</h1>
+    <h2>Kombat Result</h2>
+    <ul>
+        {% for result in kombat_result %}
+            <li>{{ result }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'simulate_kombat' %}">Volver</a>
+</body>
+</html>

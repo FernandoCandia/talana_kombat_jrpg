@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TALANA KOMBAT JRPG</title>
+</head>
+<body>
+    <h1>TALANA KOMBAT JRPG</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="json_file" id="jsonFileInput">
+        <br>
+        <br>
+        <button type="submit" id="submitButton" disabled>Cargar archivo JSON</button>
+    </form>
+
+    <script>
+        const jsonFileInput = document.getElementById('jsonFileInput');
+        const submitButton = document.getElementById('submitButton');
+
+        jsonFileInput.addEventListener('change', function() {
+            submitButton.disabled = false;
+        });
+    </script>
+
+</body>
+</html>
